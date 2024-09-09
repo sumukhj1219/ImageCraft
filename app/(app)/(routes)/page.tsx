@@ -19,7 +19,6 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
     }
   })
   
-  console.log(searchParams.name)
 
   return (
     <div>
