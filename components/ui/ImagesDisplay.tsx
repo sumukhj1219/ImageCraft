@@ -1,4 +1,5 @@
 import { Images } from '@prisma/client'
+import Image from 'next/image'
 import React from 'react'
 
 interface ImageProps{
@@ -6,6 +7,20 @@ interface ImageProps{
 }
 
 const ImagesDisplay = ({images}:ImageProps) => {
+  if(images.length === 0)
+  {
+    return (
+        <div className='flex items-center justify-center mx-auto '>
+        <Image 
+        className='grayscale'
+        src={'/cart.png'}
+        alt='not found'
+        width={300}
+        height={300}
+        />
+      </div>
+    )
+  }
   return (
     <div>
       {images.map((image)=>(

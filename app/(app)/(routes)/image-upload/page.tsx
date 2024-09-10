@@ -23,7 +23,7 @@ export default function ImageUpload() {
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
 
     if (!name || !localImagePreview) {
       alert("Please provide both a name and an image");
@@ -32,10 +32,10 @@ export default function ImageUpload() {
 
     setIsUploading(true);
     const formData = new FormData();
-    formData.append("name", name); // Add name to form data
+    formData.append("name", name); 
     const fileInput = document.querySelector("input[type='file']") as HTMLInputElement;
     const file = fileInput?.files?.[0];
-    if (file) formData.append("file", file); // Add file to form data
+    if (file) formData.append("file", file); 
 
     try {
       const response = await fetch("/api/image-upload", {
@@ -67,7 +67,7 @@ export default function ImageUpload() {
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)} // Handle name input
+              onChange={(e) => setName(e.target.value)} 
               placeholder="Type your name"
               className="input input-bordered w-full max-w-xs"
             />
