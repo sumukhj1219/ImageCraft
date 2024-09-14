@@ -38,7 +38,7 @@ export default function RootLayout({
         <Navbar />
         <div className="flex">
           <Sidebar />
-          <main className="flex-1  overflow-y-aut">
+          <main className="flex-1 mt-14 overflow-y-aut">
             {children}
           </main>
         </div>

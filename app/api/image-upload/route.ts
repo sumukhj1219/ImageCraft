@@ -13,7 +13,9 @@ cloudinary.config({
 interface CloudinaryUploadResult {
     public_id: string;
     [key: string]: any;
-    url:string
+    url:string;
+    width:number
+    height:number
 }
 
 export async function POST(request: NextRequest) {
@@ -47,11 +49,15 @@ export async function POST(request: NextRequest) {
                 uploadStream.end(buffer)
             }
         )
+        console.log(result)
         await prisma.images.create({
             data:{
                 public_id:result.public_id,
                 url:result.url,
-                name:name
+                name:name,
+                width:result.width,
+                height:result.height
+
             }
         })
         return NextResponse.json(

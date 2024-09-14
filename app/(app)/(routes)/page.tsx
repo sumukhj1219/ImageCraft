@@ -19,7 +19,6 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
     }
   })
   
-
   return (
     <div>
       <SearchBar />

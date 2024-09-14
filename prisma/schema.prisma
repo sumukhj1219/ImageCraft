@@ -20,5 +20,7 @@ model Images{
   url String?
   public_id String?
   createdAt DateTime @default(now())
+  width Int
+  height Int
   @@index([name])
 }
