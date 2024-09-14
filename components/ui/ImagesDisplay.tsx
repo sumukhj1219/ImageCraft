@@ -1,5 +1,6 @@
 import { Images } from '@prisma/client'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface ImageProps{
@@ -22,17 +23,19 @@ const ImagesDisplay = ({images}:ImageProps) => {
     )
   }
   return (
-    <div>
+    <div className='-z-20 grid grid-cols-3'>
       {images.map((image)=>(
-        <div key={image.id} className="card rounded-md bg-base-100 w-80 shadow-xl m-2">
+        <div key={image.id} className="card-side rounded-md shadow-xl m-1">
       <figure>
+        <Link href={`/image-optimize/${image.id}`}>
         <img
-          width="fit"
-          height={150}
+          width={image.width}
+          height={image.height}
           src={image.url}
           alt={image.name} 
           className="hover:scale-125 transition-transform duration-1000 ease-in-out"
           />
+        </Link>
       </figure>
     </div>
       ))}
