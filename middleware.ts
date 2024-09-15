@@ -1,6 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const isProtectedRoute = createRouteMatcher(['/image-upload(.*)', '/video-upload', '/home'])
+const isProtectedRoute = createRouteMatcher(['/image-upload', 'video-upload', '/'])
 
 export default clerkMiddleware((auth, req) => {
   if (isProtectedRoute(req)) auth().protect()

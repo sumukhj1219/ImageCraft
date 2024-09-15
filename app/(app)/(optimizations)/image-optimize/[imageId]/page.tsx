@@ -1,6 +1,6 @@
 'use server'
+import ImageOptimizer from '@/components/ui/ImageOptimizer'
 import prisma from '@/utils/db'
-import Image from 'next/image'
 import React from 'react'
 
 interface ImageOptimizeProps{
@@ -17,13 +17,7 @@ const ImageOptimize = async({params}:ImageOptimizeProps) => {
   })
   return (
     <div className='mt-14 max-w-3xl'>
-      <Image 
-      src={image?.url}
-      width={image?.width}
-      height={image?.height}
-      alt={image?.name}
-      
-      />
+      <ImageOptimizer image={image}/>
     </div>
   )
 }
