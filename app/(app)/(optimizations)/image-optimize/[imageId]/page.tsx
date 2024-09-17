@@ -1,6 +1,7 @@
 'use server'
 import ImageOptimizer from '@/components/ui/ImageOptimizer'
 import prisma from '@/utils/db'
+import { Images } from '@prisma/client'
 import React from 'react'
 
 interface ImageOptimizeProps{
@@ -10,7 +11,7 @@ interface ImageOptimizeProps{
 }
 
 const ImageOptimize = async({params}:ImageOptimizeProps) => {
-  const image = await prisma.images.findUnique({
+  const image:any = await prisma.images.findUnique({
     where:{
         id:params.imageId
     }
