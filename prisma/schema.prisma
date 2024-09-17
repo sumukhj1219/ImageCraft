@@ -17,7 +17,7 @@ datasource db {
 model Images{
   id String @id @default(uuid())
   name String @db.Text
-  url String?
+  url String
   public_id String?
   createdAt DateTime @default(now())
   width Int
