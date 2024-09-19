@@ -8,7 +8,6 @@ interface ImageOptimizerProps {
   image: Images;
 }
 
-// Define valid transformation keys for type safety
 type TransformationKey = 'cartoonify' | 'enhance' ;
 
 const inputs = [
@@ -33,7 +32,7 @@ const arts = [
 
 const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
   const [loading, setLoading] = useState(false);
-
+  const [content, setContent] = useState("")
   const [transformations, setTransformations] = useState({
     cartoonify: false,
     enhance: false,
@@ -79,20 +78,18 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
               className="rounded-md"
               {...transformations}
               priority
+              remove={content}
             />
           )}
         </div>
 
         <div className="col-span-2 flex flex-col justify-center gap-y-6 m-4">
-          {inputs.map((input) => (
-            <div key={input.placeholder}>
               <input
                 type="text"
-                placeholder={input.placeholder}
+                placeholder={'Extract the content'}
                 className="input w-96 max-w-xs"
+                onChange={(e)=>setContent(e.target.value)}
               />
-            </div>
-          ))}
         </div>
       </div>
 
