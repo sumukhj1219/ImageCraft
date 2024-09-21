@@ -78,7 +78,7 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
               className="rounded-md"
               {...transformations}
               priority
-              remove={content}
+              extract={content}
             />
           )}
         </div>

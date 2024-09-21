@@ -1,7 +1,6 @@
 'use server'
 import ImageOptimizer from '@/components/ui/ImageOptimizer'
 import prisma from '@/utils/db'
-import { Images } from '@prisma/client'
 import React from 'react'
 
 interface ImageOptimizeProps{
