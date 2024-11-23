@@ -60,7 +60,7 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
       const timeout = setTimeout(() => setLoading(false), 500);
       return(()=>clearTimeout(timeout))
     }
-  }, [loading, transformations]);
+  }, [transformations, loading]);
 
   return (
     <div className="flex flex-col gap-y-6">
