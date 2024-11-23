@@ -33,13 +33,13 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
         <Navbar />
-        <div className="flex">
+        <div className="flex bg-base-100">
           <Sidebar />
           
-          <main className="flex-1 mt-14 overflow-y-auto">
+          <main className="flex-1 mt-14 overflow-y-auto ">
             {children}
           </main>
         </div>

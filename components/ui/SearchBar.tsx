@@ -25,10 +25,10 @@ const SearchBar = () => {
     router.push(url)
   }, [debounced, router])
   return (
-    <div className=''>
+    <div className='sm:w-32 md:w-full'>
       <div className='z-20  p-2'>
        <div className="form-control m-2 ">
-      <input type="text" onChange={onChange} value={value} placeholder="Search" className="input input-bordered w-96 md:w-auto" />
+      <input type="text" onChange={onChange} value={value} placeholder="Search" className="input input-bordered w-full" />
     </div>
     </div>
     </div>

@@ -13,11 +13,6 @@ const Sidebar = () => {
       href: '/',
     },
     {
-      icon: <Video />,
-      label: 'Video Upload',
-      href: '/video-upload',
-    },
-    {
       icon: <Image />,
       label: 'Image Upload',
       href: '/image-upload',
@@ -25,7 +20,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="flex h-screen">
+    <div className="md:flex h-screen hidden">
       <aside
         data-theme="luxury"
         className="fixed top-0 left-0 w-64 h-screen m-0 rounded-md text-white mt-14"

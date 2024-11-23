@@ -1,4 +1,5 @@
 'use client';
+
 import { Images } from '@prisma/client';
 import { CldImage } from 'next-cloudinary';
 import React, { useEffect, useState } from 'react';
@@ -8,31 +9,26 @@ interface ImageOptimizerProps {
   image: Images;
 }
 
-type TransformationKey = 'cartoonify' | 'enhance' ;
-
-const inputs = [
-  { placeholder: 'Extract content from image' },
-  { placeholder: 'Remove content from image' },
-];
+type TransformationKey = 'cartoonify' | 'enhance';
 
 const buttons = [
-  { title: 'Enhance' },
-  { title: 'Cartoonify' },
+  { title: 'Enhance', key: 'enhance' },
+  { title: 'Cartoonify', key: 'cartoonify' },
 ];
 
 const arts = [
-  { art: 'eucalyptus' },
-  { art: 'fes' },
-  { art: 'hairspray' },
-  { art: 'quartz' },
-  { art: 'red_rock' },
-  { art: 'sizzle' },
-  { art: 'ukulele' },
+  'eucalyptus',
+  'fes',
+  'hairspray',
+  'quartz',
+  'red_rock',
+  'sizzle',
+  'ukulele',
 ];
 
 const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
   const [loading, setLoading] = useState(false);
-  const [content, setContent] = useState("")
+  const [content, setContent] = useState('');
   const [transformations, setTransformations] = useState({
     cartoonify: false,
     enhance: false,
@@ -58,73 +54,86 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
   useEffect(() => {
     if (loading) {
       const timeout = setTimeout(() => setLoading(false), 500);
-      return(()=>clearTimeout(timeout))
+      return () => clearTimeout(timeout);
     }
-  }, [transformations, loading]);
+  }, [loading, transformations]);
 
   return (
-    <div className="flex flex-col gap-y-6">
-      <div className="grid grid-cols-12">
-        <div className="border-white border-2 rounded-md col-span-10">
-          {loading ? (
-            <Loader />
-          ) : (
-            <CldImage
-              width={500}
-              height={500}
-              src={image.url}
-              sizes="100vw"
-              alt={image.name}
-              className="rounded-md w-full"
-              {...transformations}
-              priority
-              extract={content}
-            />
-          )}
-        </div>
-
-        <div className="col-span-2 flex flex-col justify-center gap-y-6 m-4">
-              <input
-                type="text"
-                placeholder={'Extract the content'}
-                className="input w-96 max-w-xs"
-                onChange={(e)=>setContent(e.target.value)}
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="col-span-1 lg:col-span-2 flex flex-col items-center gap-4">
+          <div className="border-2 border-gray-300 border-dashed rounded-md p-4 w-full max-w-xl">
+            {loading ? (
+              <Loader />
+            ) : (
+              <CldImage
+                width={600} 
+                height={600}
+                src={image.url}
+                sizes="100vw"
+                alt={image.name}
+                className="rounded-md w-full h-auto"
+                {...transformations}
+                priority
+                extract={content}
               />
+            )}
+          </div>
+          <div className="w-full max-w-xl">
+            <label className="block text-sm text-gray-600 mb-1">
+              Specify content to extract:
+            </label>
+            <input
+              type="text"
+              placeholder="Extract the content"
+              className="input input-bordered w-full"
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="flex">
-        {buttons.map((button) => (
-          <div key={button.title}>
-            <button
-              className="btn btn-outline m-2 btn-warning"
-              onClick={() => toggleTransformation(button.title.toLowerCase() as TransformationKey)}
-            >
-              {button.title}
-            </button>
-          </div>
-        ))}
-
-        <div className="dropdown dropdown-top mt-1">
-          <div tabIndex={0} role="button" className="btn btn-warning m-1">
-            Arts
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-          >
-            {arts.map((artItem) => (
-              <li key={artItem.art}>
-                <a
-                  onClick={() => handleArtSelection(artItem.art)}
-                  className={`cursor-pointer ${transformations.art === artItem.art ? 'bg-secondary' : ''
-                    }`}
-                >
-                  {artItem.art}
-                </a>
-              </li>
+        <div className="col-span-1 flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
+            <span className="text-lg font-semibold">Transformations:</span>
+            {buttons.map((button) => (
+              <button
+                key={button.key}
+                className={`btn btn-outline ${transformations[button.key as TransformationKey] ? 'btn-active' : ''
+                  }`}
+                onClick={() => toggleTransformation(button.key as TransformationKey)}
+              >
+                {button.title}
+              </button>
             ))}
-          </ul>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold">Select Art Style:</span>
+            <div className="dropdown">
+              <button
+                tabIndex={0}
+                className="btn btn-outline dropdown-toggle"
+              >
+                Arts
+              </button>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu rounded-box shadow-lg bg-base-100 w-52 p-2"
+              >
+                {arts.map((art) => (
+                  <li key={art}>
+                    <button
+                      className={`w-full text-left px-4 py-2 ${transformations.art === art ? 'bg-gray-300' : ''
+                        }`}
+                      onClick={() => handleArtSelection(art)}
+                    >
+                      {art}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

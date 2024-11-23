@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
-import { auth } from '@clerk/nextjs/server';
+import { auth} from '@clerk/nextjs/server';
 import prisma from '@/utils/db';
-import { error } from 'console';
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -36,12 +35,9 @@ export async function POST(request: NextRequest) {
         await prisma.user.create({
             data:{
                 id: userId,
-            
             }
         })
     }
-    
-
     
 
     try {
@@ -76,7 +72,7 @@ export async function POST(request: NextRequest) {
                 name:name,
                 width:result.width,
                 height:result.height,
-                uploadedById: userId
+                uploadedById: userId,
             }
         })
         return NextResponse.json(

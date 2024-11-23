@@ -16,7 +16,7 @@ model Images {
   createdAt DateTime @default(now())
   width     Int
   height    Int
-  uploadedBy  User     @relation(fields: [uploadedById], references: [id])
+  uploadedBy  User?     @relation(fields: [uploadedById], references: [id])
   uploadedById String
   @@index([name])
 }
