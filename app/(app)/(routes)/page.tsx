@@ -2,6 +2,7 @@
 import ImagesDisplay from '@/components/ui/ImagesDisplay'
 import SearchBar from '@/components/ui/SearchBar'
 import prisma from '@/utils/db'
+import { auth } from '@clerk/nextjs/server'
 import React from 'react'
 
 interface HomePageProps {
@@ -10,12 +11,20 @@ interface HomePageProps {
   }
 }
 
+
+
 const HomePage = async ({ searchParams }: HomePageProps) => {
+  const {userId} = auth()
+  if(!userId)
+  {
+    return ;
+  }
   const images = await prisma.images.findMany({
     where: {
       name: {
         search: searchParams.name
       },
+      uploadedById:userId
     }
   })
   

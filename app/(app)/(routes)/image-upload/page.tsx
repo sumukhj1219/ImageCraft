@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 export default function ImageUpload() {
-  const [name, setName] = useState<string>(""); // Add state for name
+  const [name, setName] = useState<string>(""); 
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [localImagePreview, setLocalImagePreview] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);

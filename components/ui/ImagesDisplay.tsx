@@ -10,11 +10,11 @@ interface ImageProps {
 const ImagesDisplay = ({ images }: ImageProps) => {
   if (images.length === 0) {
     return (
-      <div className='flex items-center justify-center mx-auto'>
+      <div className="flex items-center justify-center mx-auto">
         <Image 
-          className='grayscale'
+          className="grayscale"
           src={'/cart.png'}
-          alt='not found'
+          alt="not found"
           width={300}
           height={300}
         />
@@ -22,17 +22,17 @@ const ImagesDisplay = ({ images }: ImageProps) => {
     );
   }
   return (
-    <div className='grid grid-cols-3 gap-0'>
+    <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
       {images.map((image) => (
-        <div key={image.id} className='relative w-150 m-2'>
+        <div key={image.id} className="relative w-full break-inside-avoid">
           <Link href={`/image-optimize/${image.id}`}>
             <Image
               width={image.width}
               height={image.height}
               src={image.url}
               alt={image.name}
-              loading='eager'
-              className="hover:scale-105 transition-transform duration-500 ease-in-out object-cover w-full h-full border-white border-2 rounded-lg"
+              loading="eager"
+              className="hover:scale-105 transition-transform duration-500 ease-in-out object-cover w-full h-auto rounded-lg"
             />
           </Link>
         </div>

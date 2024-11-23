@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 import { auth } from '@clerk/nextjs/server';
 import prisma from '@/utils/db';
+import { error } from 'console';
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -20,9 +21,28 @@ interface CloudinaryUploadResult {
 export async function POST(request: NextRequest) {
     const {userId} = auth()
 
-    if (!userId) {
-        return NextResponse.json({error: "Unauthorized"}, {status: 401})
+    if(!userId){
+        return NextResponse.json({error:'Unauthorized'}, {status:403})
     }
+
+    const user = await prisma.user.findUnique({
+        where:{
+            id: userId
+        }
+    })
+
+    if(!user)
+    {
+        await prisma.user.create({
+            data:{
+                id: userId,
+            
+            }
+        })
+    }
+    
+
+    
 
     try {
         const formData = await request.formData();
@@ -55,8 +75,8 @@ export async function POST(request: NextRequest) {
                 url:result.url,
                 name:name,
                 width:result.width,
-                height:result.height
-
+                height:result.height,
+                uploadedById: userId
             }
         })
         return NextResponse.json(

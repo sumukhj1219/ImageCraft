@@ -11,6 +11,12 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        columns: {
+          1: '1',
+          2: '2',
+          3: '3',
+          4: '4',
+        },
       },
     },
   },

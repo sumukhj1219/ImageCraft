@@ -16,7 +16,14 @@ model Images {
   createdAt DateTime @default(now())
   width     Int
   height    Int
+  uploadedBy  User     @relation(fields: [uploadedById], references: [id])
+  uploadedById String
   @@index([name])
+}
+
+model User {
+  id       String    @id @default(uuid())
+  images   Images[]
 }
 
 

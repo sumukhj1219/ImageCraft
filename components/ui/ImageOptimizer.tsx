@@ -70,12 +70,12 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
             <Loader />
           ) : (
             <CldImage
-              width={image.width}
-              height={image.height}
+              width={500}
+              height={500}
               src={image.url}
               sizes="100vw"
               alt={image.name}
-              className="rounded-md"
+              className="rounded-md w-full"
               {...transformations}
               priority
               extract={content}
