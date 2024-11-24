@@ -13,7 +13,7 @@ interface HomePageProps {
 
 
 
-const HomePage = async ({ searchParams }: HomePageProps) => {
+const Dashboard = async ({ searchParams }: HomePageProps) => {
   const {userId} = auth()
   if(!userId)
   {
@@ -36,4 +36,4 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
   )
 }
 
-export default HomePage
+export default Dashboard

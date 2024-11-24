@@ -37,7 +37,7 @@ const Navbar = () => {
             </div>
           </dialog>
         </div>
-        <a className="btn btn-ghost items-center justify-center text-xl hidden md:block" href='/'>
+        <a className="btn btn-ghost items-center justify-center text-xl hidden md:block text-muted" href='/'>
           ImageCraft
         </a>
       </div>

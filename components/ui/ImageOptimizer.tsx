@@ -94,7 +94,7 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
 
         <div className="col-span-1 flex flex-col gap-6">
           <div className="flex flex-col gap-4">
-            <span className="text-lg font-semibold">Transformations:</span>
+            <span className="text-lg font-semibold text-muted">Transformations:</span>
             {buttons.map((button) => (
               <button
                 key={button.key}
@@ -108,7 +108,7 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <span className="text-lg font-semibold">Select Art Style:</span>
+            <span className="text-lg font-semibold text-muted">Select Art Style:</span>
             <div className="dropdown">
               <button
                 tabIndex={0}

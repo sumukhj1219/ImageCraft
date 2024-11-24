@@ -58,7 +58,7 @@ export default function ImageUpload() {
     <div className="container mx-auto p-4 max-w-4xl">
       <div className="card">
         <div className="card-body">
-          <h2 className="card-title mb-4">Upload an Image</h2>
+          <h2 className="card-title mb-4 text-muted">Upload an Image</h2>
           <form onSubmit={handleSubmit} className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -77,7 +77,7 @@ export default function ImageUpload() {
             <input
               type="file"
               onChange={handleFileUpload}
-              className="file-input file-input-bordered file-input-primary w-full"
+              className="file-input file-input-bordered file-input-primary w-full text-muted"
             />
 
             {isUploading && (
