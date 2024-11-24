@@ -35,7 +35,7 @@ const ImagesDisplay = ({ images }: ImageProps) => {
               src={image.url}
               alt={image.name}
               loading="eager"
-              className="hover:scale-105 relative transition-transform duration-500 ease-in-out object-cover w-full h-auto rounded-lg"
+              className="hover:scale-105 bg-origin-content md:p-3 p-3 border-4 md:border-8 border-white relative transition-transform duration-500 ease-in-out object-cover w-full h-auto"
             />
           </Link>
         </div>
