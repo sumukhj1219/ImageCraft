@@ -59,7 +59,7 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
   }, [loading, transformations]);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-base-100">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="col-span-1 lg:col-span-2 flex flex-col items-center gap-4">
           <div className="border-2 border-gray-300 border-dashed rounded-md p-4 w-full max-w-xl">
@@ -92,7 +92,7 @@ const ImageOptimizer = ({ image }: ImageOptimizerProps) => {
           </div>
         </div>
 
-        <div className="col-span-1 flex flex-col gap-6">
+        <div className="col-span-1 flex flex-col gap-6 bg-base-100">
           <div className="flex flex-col gap-4">
             <span className="text-lg font-semibold text-muted">Transformations:</span>
             {buttons.map((button) => (

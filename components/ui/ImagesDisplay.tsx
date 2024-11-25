@@ -28,14 +28,13 @@ const ImagesDisplay = ({ images }: ImageProps) => {
           <Link href={`/image-optimize/${image.id}`} 
           aria-label={`View image uploaded by ${image.uploadedById}`}
           >
-         
             <Image
               width={image.width}
               height={image.height}
               src={image.url}
               alt={image.name}
               loading="eager"
-              className="hover:scale-105 bg-origin-content md:p-3 p-2 md:border-8 border-white relative transition-transform duration-500 ease-in-out object-cover w-full h-auto"
+              className=" bg-origin-content md:p-3 p-2 md:border-8 border-white relative transition-transform duration-500 ease-in-out object-cover w-full h-auto"
             />
           </Link>
         </div>
