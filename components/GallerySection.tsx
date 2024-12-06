@@ -7,15 +7,13 @@ import { motion } from 'framer-motion'
 import React from 'react'
 
 const images = [
-  { src: 'https://res.cloudinary.com/dijepfvkc/image/upload/v1699796573/samples/woman-on-a-football-field.jpg', width: 400, height: 300 },
-  { src: 'https://res.cloudinary.com/dijepfvkc/image/upload/v1699796554/samples/food/spices.jpg', width: 300, height: 400 },
-  { src: 'https://res.cloudinary.com/dijepfvkc/image/upload/v1699796551/samples/landscapes/beach-boat.jpg', width: 400, height: 300 },
-  { src: 'https://res.cloudinary.com/dijepfvkc/image/upload/v1699796555/samples/landscapes/nature-mountains.jpg', width: 300, height: 400 },
-  { src: 'https://res.cloudinary.com/dijepfvkc/image/upload/v1699796572/samples/dessert-on-a-plate.jpg', width: 400, height: 300 },
-  { src: 'https://res.cloudinary.com/dijepfvkc/image/upload/v1699796571/samples/man-on-a-street.jpg', width: 300, height: 400 },
+  { src: '/gal-1.avif', width: 400, height: 300 },
+  { src: '/gal-2.avif', width: 300, height: 400 },
+  { src: '/gal-3.jpg', width: 400, height: 300 },
+  { src: '/gal-4.jpg', width: 300, height: 400 },
+  { src: '/gal-5.avif', width: 400, height: 300 },
+  { src: '/gal-6.jpg', width: 300, height: 400 },
 ]
-
-
 
 const GallerySection = () => {
 
